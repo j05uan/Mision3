@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emisiones de CO2</title>
+</head>
+<body>
+    <h1>Top 10 Países con Mayor Emisión de CO2 en los Últimos 5 Años</h1>
+    <img src="{{ top_graph_url }}" alt="Gráfico de Emisiones de CO2 Top Países">
+
+    <form action="/" method="post">
+        <label for="country">Selecciona un país:</label>
+        <select name="country" id="country">
+            {% for country in all_countries %}
+                <option value="{{ country }}">{{ country }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Ver Gráfico">
+    </form>
+
+    {% if graph_url %}
+        <h2>Emisiones de CO2 en {{ selected_country }} a lo largo de los años</h2>
+        <img src="{{ graph_url }}" alt="Gráfico de Emisiones de CO2">
+    {% endif %}
+</body>
+</html>
